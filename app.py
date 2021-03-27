@@ -1,7 +1,7 @@
 import discord
 
 from discord.ext import commands
-client = commands.Bot(command_prefix="<3")
+client = commands.Bot(command_prefix="<3 ")
 @client.event
 async def on_ready():
     #status of bot
@@ -9,8 +9,58 @@ async def on_ready():
     
     print("The bot is ready")
 
+   #Embed
+@client.command() 
+async def shedule(ctx):
+    embed = discord.Embed(
+        title= "Shedule ",
+        color = discord.Color.purple(),
+        description = "Follow the Shedule provided."
+    )
+    embed.add_field(name="Weight gain", value="Workouts:-Push Day, Pull day, Leg Day", inline=True)
+    embed.add_field(name="Fat Loss", value="Workouts:- Cardio Workouts always", inline=True)
+    embed.set_image(url='https://th.bing.com/th/id/OIP.1NfnV_pv0VI4QaQJBgHdVQHaEc?w=300&h=180&c=7&o=5&pid=1.7')
+    embed.set_thumbnail(url='https://th.bing.com/th/id/OIP.W1Sy8iy9IUMxY5nxgUVeZwHaHa?w=182&h=182&c=7&o=5&pid=1.7')
+
+    await ctx.send(embed=embed)
+
+@client.command() 
+async def pushday(ctx):
+    embed = discord.Embed(
+        title= "Push Day Workouts",
+        color = discord.Color.purple(),
+        description = "We have some push day workouts here:-"
+    )
+    embed.add_field(name="Weighted Pushups", value="Do Pushups With Weight For eg:-Bags", inline=True)
+    embed.add_field(name="Dips", value="Do some dips (you can add wighths)", inline=True)
 
     
+    
+    
+
+    await ctx.send(embed=embed)
+
+@client.command() 
+async def weightedpushups(ctx):
+    embed = discord.Embed(
+        title= "How to do Weighted pushups",
+        color = discord.Color.purple(),
+        description = "Just add weights (book in bags) in Normal pushups"
+    )
+    embed.set_image(url='https://tenor.com/view/captain-america-push-up-army-gif-15310843')
+    
+    await ctx.send(embed=embed)
+    
+@client.command() 
+async def pull(ctx):
+    embed = discord.Embed(
+        title= "Push Day Workouts",
+        color = discord.Color.purple(),
+        description = "We have some pull day workouts here:-"
+    )
+    embed.add_field(name="Pullups", value="Do Pullups ", inline=True)
+    embed.add_field(name="Bicep curls", value="Do Bicep curls", inline=False)
+
 
     
    
@@ -48,4 +98,4 @@ async def sendDM(ctx, member: discord.Member, *, content):
 # Usage: !send_anonymous_dm @mention_user <your message here>
  
  
-client.run("Tero Bau")
+client.run("Aachi Khau")
