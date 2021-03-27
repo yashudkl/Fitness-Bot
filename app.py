@@ -1,27 +1,51 @@
-import discord # Main Module for discord API wrapper
-import json    # Module required to read to bot_config.json file
+import discord
 
-prefix = '<3'  # Prefix of the bot '<3'
+from discord.ext import commands
+client = commands.Bot(command_prefix="<3")
+@client.event
+async def on_ready():
+    #status of bot
+    await client.change_presence(activity=discord.Game('<3/ Workout'))
+    
+    print("The bot is ready")
 
-class MyClient(discord.Client):
-    async def on_ready(self):
-        print(f'{self.user} is cloud')
-    async def on_message(self, message):
-        if message.author is self.user:
-            return
-        if message.content == f'{prefix} test':
-            await message.channel.send('test works!, YESWON GAY')
 
-def get_token():
-    """grepping token from config file
-    args:
-        client_token : token of the cleint
-    """
-    with open ('bot_config.json', 'r') as json_file:
-        json_object = json.load(json_file)
-        json_pair   = json_object.items()
-        client_token = json_pair['token']
-    return client_token
+    
 
-client = MyClient()     # declaring bot variable
-client.run(get_token()) # running the bot
+    
+   
+
+    #ping
+@client.command()
+async def ping(ctx):
+    await ctx.send(f'Pong {round(client.latency*1000)}ms')
+
+@client.command()
+async def clear(ctx, amount=5):
+    await ctx.channel.purge(limit=amount)
+    
+
+import asyncio
+@client.command()
+async def test(ctx, arg):
+    await ctx.send(arg)
+ 
+
+ 
+#Send anonymous DM's
+@client.command()
+async def send_anonymous_dm(ctx, member: discord.Member, *, content):
+    channel = await member.create_dm() # creates a DM channel for mentioned user
+    await channel.send(content) # send whatever in the content to the mentioned user.
+# Usage: !send_anonymous_dm @mention_user <your message here>
+ 
+# THIS FUNCTION WILL SEND A DM WITH THE AUTHORS NAME.
+@client.command()
+async def sendDM(ctx, member: discord.Member, *, content):
+    channel = await member.create_dm() # creates a DM channel for mentioned user
+    await channel.send(f"**{ctx.message.author} said:** {content}") # send whatever in the content to the mentioned user along with the author's name.
+ 
+# Usage: !send_anonymous_dm @mention_user <your message here>
+ 
+ 
+client.run("Tero Bau")
