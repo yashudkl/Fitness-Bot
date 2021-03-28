@@ -1,22 +1,31 @@
-import discord
+import discord # discord.py module
+from discord.ext import commands # discord.py commands module
+from discord.ext import tasks
+client = commands.Bot(command_prefix="<3 ") # global bot delcaration 
+import asyncio
+from attr import s
+from datetime import datetime
+import datetime as dt
 
-from discord.ext import commands
-client = commands.Bot(command_prefix="<3 ")
+@client.command()
+async def reminder(ctx, time, about):
+    print(f"will reminder you after {time}m about {about}")
+
+
 @client.event
 async def on_ready():
-    #status of bot
+    # status of bot
     await client.change_presence(activity=discord.Game('<3/ Workout'))
-    
-    print("The bot is ready")
+    print(f'{client.user.name} deployed!')
 
-   #Embed
 @client.command() 
-async def shedule(ctx):
+async def schedule(ctx):
+    # Shows schedule of a user
     embed = discord.Embed(
-        title= "Shedule ",
+        title= "Schedule ",
         color = discord.Color.purple(),
-        description = "Follow the Shedule provided."
-    )
+        description = "Follow the Schedule provided."
+        )
     embed.add_field(name="Weight gain", value="Workouts:-Push , Pull , Leg", inline=True)
     embed.add_field(name="Fat Loss", value="Workouts:- Cardio ", inline=True)
     embed.set_image(url='https://th.bing.com/th/id/OIP.1NfnV_pv0VI4QaQJBgHdVQHaEc?w=300&h=180&c=7&o=5&pid=1.7')
@@ -108,28 +117,11 @@ async def squats(ctx):
     
     await ctx.send(embed=embed)
 
-  
-     
-
-   
-#tic tac toe 
-
-   
-
-
-   
-#ping(
 @client.command()
 async def ping(ctx):
-    await ctx.send(f'Pong {round(client.latency*1000)}ms')
+    # Test command, tells the latency of the bot
+    await ctx.send(f'Pong! 🏓 {round(client.latency*1000)}ms')
 
-@client.command()
-async def clear(ctx, amount=5):
-    await ctx.channel.purge(limit=amount)
-    
-
-import asyncio
-from attr import s
 @client.command()
 async def test(ctx, arg):
     await ctx.send(arg)
@@ -151,5 +143,22 @@ async def sendDM(ctx, member: discord.Member, *, content):
  
 # Usage: !send_anonymous_dm @mention_user <your message here>
  
- 
-client.run("Aachi")
+
+# Reminds at 5:40 to workout
+async def check_reminder():
+    
+    while(True):
+        await asyncio.sleep(1)
+        now = datetime.now()
+        current_time  = now.strftime("%H:%M:%S")
+        x = dt.time(17, 40, 0)
+        if current_time == str(x):
+            channel = client.get_channel(813017363443482645)
+            await channel.send(f'<@&{825697640560853004}> its time to workout!!')
+            # print("YES")
+        else:
+            print("NO")
+
+
+client.loop.create_task(check_reminder())
+client.run("ODIyMjcxMjM3Nzk4ODg3NDI0.YFP1xA.KX75SdHwkOra-bVKkr4Oz71LZh4")
