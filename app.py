@@ -152,12 +152,13 @@ async def check_reminder():
         await asyncio.sleep(1)
         now = datetime.now()
         current_time  = now.strftime("%H:%M:%S")
-        x = dt.time(17, 40, 0)
+        x = dt.time(17, 0, 0)
         if current_time == str(x):
             channel = client.get_channel(813017363443482645)
             await channel.send(f'<@&{825697640560853004}> its time to workout!!')
+            print("ok ok")
         else:
-            return
+            print(current_time)
 
 
 client.loop.create_task(check_reminder())
