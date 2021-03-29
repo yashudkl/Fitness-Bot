@@ -1,11 +1,22 @@
 import discord                                  # discord.py module.
 from discord.ext import commands, tasks         # discord.py commands module.
-client = commands.Bot(command_prefix = "<3 ")   # global bot delcaration.
 import asyncio                                  # time.sleep function.
-from attr import s
+import json                                     # json module for reading and writing into json file(s).
 from datetime import datetime                   # datetime for getting current time. 
 import datetime as dt                           # datetime for setting time.
 
+def get_token():
+    """
+    token grabber. returns: client's token  
+    """
+    with open('bot_config.json', 'r') as openfile:
+        json_object = json.load(openfile)
+        pairs = json_object.items()
+        bot_token = json_object["token"]
+    return bot_token
+
+
+client = commands.Bot(command_prefix = "<3 ")   # global bot delcaration.
 # bot on ready function
 @client.event
 async def on_ready():
@@ -150,4 +161,4 @@ async def check_reminder():
 
 
 client.loop.create_task(check_reminder())
-client.run("ODIyMjcxMjM3Nzk4ODg3NDI0.YFP1xA.KX75SdHwkOra-bVKkr4Oz71LZh4")
+client.run(get_token())
