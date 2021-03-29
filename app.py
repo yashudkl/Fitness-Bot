@@ -1,26 +1,20 @@
-import discord # discord.py module
-from discord.ext import commands # discord.py commands module
-from discord.ext import tasks
-client = commands.Bot(command_prefix="<3 ") # global bot delcaration 
-import asyncio
+import discord                                  # discord.py module.
+from discord.ext import commands, tasks         # discord.py commands module.
+client = commands.Bot(command_prefix = "<3 ")   # global bot delcaration.
+import asyncio                                  # time.sleep function.
 from attr import s
-from datetime import datetime
-import datetime as dt
+from datetime import datetime                   # datetime for getting current time. 
+import datetime as dt                           # datetime for setting time.
 
-@client.command()
-async def reminder(ctx, time, about):
-    print(f"will reminder you after {time}m about {about}")
-
-
+# bot on ready function
 @client.event
 async def on_ready():
-    # status of bot
     await client.change_presence(activity=discord.Game('<3/ Workout'))
     print(f'{client.user.name} deployed!')
 
+# lists outs schedule of the week
 @client.command() 
 async def schedule(ctx):
-    # Shows schedule of a user
     embed = discord.Embed(
         title= "Schedule ",
         color = discord.Color.purple(),
@@ -30,9 +24,9 @@ async def schedule(ctx):
     embed.add_field(name="Fat Loss", value="Workouts:- Cardio ", inline=True)
     embed.set_image(url='https://th.bing.com/th/id/OIP.1NfnV_pv0VI4QaQJBgHdVQHaEc?w=300&h=180&c=7&o=5&pid=1.7')
     embed.set_thumbnail(url='https://th.bing.com/th/id/OIP.W1Sy8iy9IUMxY5nxgUVeZwHaHa?w=182&h=182&c=7&o=5&pid=1.7')
-
     await ctx.send(embed=embed)
 
+# information about pull
 @client.command() 
 async def push(ctx):
     embed = discord.Embed(
@@ -42,13 +36,9 @@ async def push(ctx):
     )
     embed.add_field(name="Weighted Pushups", value="Do Pushups (<3 weightedpushups)", inline=True)
     embed.add_field(name="Dips", value="Do some dips (<3 dips)", inline=True)
-
-    
-    
-    
-
     await ctx.send(embed=embed)
 
+# information about pushups
 @client.command() 
 async def weightedpushups(ctx):
     embed = discord.Embed(
@@ -57,9 +47,9 @@ async def weightedpushups(ctx):
         description = "Just add weights (book in bags) in Normal pushups"
     )
     embed.set_image(url='https://media.discordapp.net/attachments/813017363443482645/825259653846925342/SmartVapidCaribou-small.gif')
-    
     await ctx.send(embed=embed)
 
+# information about dips
 @client.command() 
 async def dips(ctx):
     embed = discord.Embed(
@@ -68,10 +58,9 @@ async def dips(ctx):
         description = "See in GIF below"
     )
     embed.set_image(url='')
-    
     await ctx.send(embed=embed)
 
-    
+# information about pull
 @client.command() 
 async def pull(ctx):
     embed = discord.Embed(
@@ -84,6 +73,7 @@ async def pull(ctx):
 
     await ctx.send(embed=embed)
 
+# information about pullups
 @client.command() 
 async def pullups(ctx):
     embed = discord.Embed(
@@ -95,6 +85,7 @@ async def pullups(ctx):
     
     await ctx.send(embed=embed)
 
+# information about bicepcurls
 @client.command() 
 async def bicepcurls(ctx):
     embed = discord.Embed(
@@ -102,10 +93,10 @@ async def bicepcurls(ctx):
         color = discord.Color.purple(),
         description = "See in GIF below (warning don't use cat)"
     )
-    embed.set_image(url='https://media.discordapp.net/attachments/813017363443482645/825276894098227240/9ViG.gif')
-    
+    embed.set_image(url='https://media.discordapp.net/attachments/813017363443482645/825276894098227240/9ViG.gif')  
     await ctx.send(embed=embed)
 
+# information about squats
 @client.command() 
 async def squats(ctx):
     embed = discord.Embed(
@@ -113,40 +104,39 @@ async def squats(ctx):
         color = discord.Color.purple(),
         description = "See in GIF below (warning dog compulsary)"
     )
-    embed.set_image(url='https://media.discordapp.net/attachments/813017363443482645/825276133524242472/1q0G.gif')
-    
+    embed.set_image(url='https://media.discordapp.net/attachments/813017363443482645/825276133524242472/1q0G.gif')    
     await ctx.send(embed=embed)
 
+
+# Test command, tells the latency of the bot
 @client.command()
 async def ping(ctx):
-    # Test command, tells the latency of the bot
     await ctx.send(f'Pong! 🏓 {round(client.latency*1000)}ms')
-
-@client.command()
-async def test(ctx, arg):
-    await ctx.send(arg)
- 
 
  
 #Send anonymous DM's
-@client.command()
-async def send_anonymous_dm(ctx, member: discord.Member, *, content):
-    channel = await member.create_dm() # creates a DM channel for mentioned user
-    await channel.send(content) # send whatever in the content to the mentioned user.
-# Usage: !send_anonymous_dm @mention_user <your message here>
+# @client.command()
+# async def send_anonymous_dm(ctx, member: discord.Member, *, content):
+#     channel = await member.create_dm() # creates a DM channel for mentioned user
+#     await channel.send(content) # send whatever in the content to the mentioned user.
+# # Usage: !send_anonymous_dm @mention_user <your message here>
  
-# THIS FUNCTION WILL SEND A DM WITH THE AUTHORS NAME.
-@client.command()
-async def sendDM(ctx, member: discord.Member, *, content):
-    channel = await member.create_dm() # creates a DM channel for mentioned user
-    await channel.send(f"**{ctx.message.author} said:** {content}") # send whatever in the content to the mentioned user along with the author's name.
+# # THIS FUNCTION WILL SEND A DM WITH THE AUTHORS NAME.
+# @client.command()
+# async def sendDM(ctx, member: discord.Member, *, content):
+#     channel = await member.create_dm() # creates a DM channel for mentioned user
+#     await channel.send(f"**{ctx.message.author} said:** {content}") # send whatever in the content to the mentioned user along with the author's name.
  
 # Usage: !send_anonymous_dm @mention_user <your message here>
  
 
 # Reminds at 5:40 to workout
 async def check_reminder():
-    
+    """a function loop for checking reminder every sec.
+    Args:
+        now: current time
+          x: workout times
+    """
     while(True):
         await asyncio.sleep(1)
         now = datetime.now()
@@ -155,9 +145,8 @@ async def check_reminder():
         if current_time == str(x):
             channel = client.get_channel(813017363443482645)
             await channel.send(f'<@&{825697640560853004}> its time to workout!!')
-            # print("YES")
         else:
-            print("NO")
+            return
 
 
 client.loop.create_task(check_reminder())
