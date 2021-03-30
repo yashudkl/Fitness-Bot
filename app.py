@@ -16,7 +16,7 @@ def get_token():
     return bot_token
 
 
-client = commands.Bot(command_prefix = "<3 ")   # global bot delcaration.
+client = commands.Bot(command_prefix = "test ")   # global bot delcaration.
 # bot on ready function
 @client.event
 async def on_ready():
@@ -24,6 +24,24 @@ async def on_ready():
     print(f'{client.user.name} deployed!')
 
 # lists outs schedule of the week
+@client.command()
+async def routine(ctx):
+    routine_embed = discord.Embed(
+        title = "📋: Routine",
+        color = discord.Color.purple(),
+        description = "7 days, 6 grind, 1 rest."
+    )
+    routine_embed.add_field(name = "Sun",  value  = "Push day", inline = True)
+    routine_embed.add_field(name = "Mon",  value  = "Pull day", inline = True)
+    routine_embed.add_field(name = "Tues", value  = "Leg day", inline = True)
+    routine_embed.add_field(name = "Wed",  value  = "Abs day", inline = True)
+    routine_embed.add_field(name = "Thrs", value  = "Pull day", inline = True)
+    routine_embed.add_field(name = "Sat",  value  = "Pull day")
+    routine_embed.set_thumbnail(url = 'https://media4.giphy.com/media/3o7qE4gcYTW1zZPkre/source.gif')
+    routine_embed.set_footer(text = 'Friday rest  🛌')
+    await ctx.send(embed = routine_embed)
+
+
 @client.command() 
 async def schedule(ctx):
     embed = discord.Embed(
@@ -124,24 +142,7 @@ async def squats(ctx):
 async def ping(ctx):
     await ctx.send(f'Pong! 🏓 {round(client.latency*1000)}ms')
 
- 
-#Send anonymous DM's
-# @client.command()
-# async def send_anonymous_dm(ctx, member: discord.Member, *, content):
-#     channel = await member.create_dm() # creates a DM channel for mentioned user
-#     await channel.send(content) # send whatever in the content to the mentioned user.
-# # Usage: !send_anonymous_dm @mention_user <your message here>
- 
-# # THIS FUNCTION WILL SEND A DM WITH THE AUTHORS NAME.
-# @client.command()
-# async def sendDM(ctx, member: discord.Member, *, content):
-#     channel = await member.create_dm() # creates a DM channel for mentioned user
-#     await channel.send(f"**{ctx.message.author} said:** {content}") # send whatever in the content to the mentioned user along with the author's name.
- 
-# Usage: !send_anonymous_dm @mention_user <your message here>
- 
 
-# Reminds at 5:40 to workout
 async def check_reminder():
     """a function loop for checking reminder every sec.
     Args:
@@ -152,14 +153,12 @@ async def check_reminder():
         await asyncio.sleep(1)
         now = datetime.now()
         current_time  = now.strftime("%H:%M:%S")
-        x = dt.time(17, 0, 0)
+        x = dt.time(5, 30, 0)
         if current_time == str(x):
             channel = client.get_channel(813017363443482645)
             await channel.send(f'<@&{825697640560853004}> its time to workout!!')
-            print("ok ok")
-        else:
-            print(current_time)
-
+        
 
 client.loop.create_task(check_reminder())
 client.run(get_token())
+
