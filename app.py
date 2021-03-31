@@ -67,10 +67,7 @@ def get_routine():
         _6_reps  = json_object[str(week_days[week_num])]['6']['reps']
         _6_link  = json_object[str(week_days[week_num])]['6']['link']
 
-        _7_title = json_object[str(week_days[week_num])]['7']['name']
-        _7_reps  = json_object[str(week_days[week_num])]['7']['reps']
-        _7_link  = json_object[str(week_days[week_num])]['7']['link']
-    return routine_title, _1_title, _1_reps, _1_link, _2_title, _2_reps, _2_link, _3_title, _3_reps, _3_link, _4_title, _4_reps, _4_link, _5_title, _5_reps, _5_link, _6_title, _6_reps, _6_link, _7_title, _7_reps, _7_link
+    return routine_title, _1_title, _1_reps, _1_link, _2_title, _2_reps, _2_link, _3_title, _3_reps, _3_link, _4_title, _4_reps, _4_link, _5_title, _5_reps, _5_link, _6_title, _6_reps, _6_link
 
 
 
@@ -81,22 +78,21 @@ async def on_ready():
     await client.change_presence(activity=discord.Game('<3/ Workout'))
     print(f'{client.user.name} deployed!')
 
-
 @client.command()
 async def schedule(ctx):
-    title,_1_title, _1_reps, _1_link,  _2_title, _2_reps, _2_link, _3_title, _3_reps, _3_link, _4_title, _4_reps, _4_link, _5_title, _5_reps, _5_link, _6_title, _6_reps, _6_link, _7_title, _7_reps, _7_link = get_routine()
+    title,_1_title, _1_reps, _1_link,  _2_title, _2_reps, _2_link, _3_title, _3_reps, _3_link, _4_title, _4_reps, _4_link, _5_title, _5_reps, _5_link, _6_title, _6_reps, _6_link = get_routine()
     schedule_embed = discord.Embed(
-        title = "📋",
+        title = f'📋 {title}',
         color = discord.Color.purple(),
-        description = 'Do all reps for 4 rounds each!'
+        description = 'Do 4 rounds of each reps!'
     )
-    schedule_embed.add_field(name = _1_title,  value  = f"{_1_reps} reps", inline = True)
-    schedule_embed.add_field(name = _2_title,  value  = f"{_2_reps} reps", inline = True)
-    schedule_embed.add_field(name = _3_title,  value  = f"{_3_reps} reps", inline = True)
-    schedule_embed.add_field(name = _4_title,  value  = f"{_4_reps} reps", inline = True)
-    schedule_embed.add_field(name = _5_title,  value  = f"{_5_reps} reps", inline = True)
-    schedule_embed.add_field(name = _6_title,  value  = f"{_6_reps} reps", inline = True)
-    
+    schedule_embed.add_field(name = _1_title,  value  = f"[{_1_reps}]({_1_link}) reps", inline = True)
+    schedule_embed.add_field(name = _2_title,  value  = f"[{_2_reps}]({_2_link}) reps", inline = True)
+    schedule_embed.add_field(name = _3_title,  value  = f"[{_3_reps}]({_3_link}) reps", inline = True)
+    schedule_embed.add_field(name = _4_title,  value  = f"[{_4_reps}]({_4_link}) reps", inline = True)
+    schedule_embed.add_field(name = _5_title,  value  = f"[{_5_reps}]({_5_link}) reps", inline = True)
+    schedule_embed.add_field(name = _6_title,  value  = f"[{_6_reps}]({_6_link}) reps", inline = True)
+    schedule_embed.add_field(text = 'DM us for more info')
     await ctx.send(embed = schedule_embed)
 
 # lists outs schedule of the week
