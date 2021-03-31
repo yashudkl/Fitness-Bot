@@ -1,0 +1,266 @@
+{
+    "sunday":{
+    "title":"Push day",
+    "1" : {
+        "name" : "Diamond pushups",
+        "reps" : "10/20",
+        "link" : ""
+    },
+    "2" : {
+        "name" : "Widearm pushups",
+        "reps" : "10/20",
+        "link" : ""
+    },
+    "3" : {
+        "name" : "Archar puships",
+        "reps" : "10/20",
+        "link" : ""
+    },
+    "4" : {
+        "name" : "Bench dips",
+        "reps" : "10/20",
+        "link" : ""
+    },
+    "5" : {
+        "name" : "Decline pushups",
+        "reps" : "10/20",
+        "link" : ""
+    },
+    "6" : {
+        "name" : "Cross tricep extensions",
+        "reps" : "10/20",
+        "link" : ""
+    }
+
+
+    },
+    "monday" : {
+        "title" : "Pull day",
+        "1" : {
+            "name" : "",
+            "reps" : "",
+            "link" : ""
+        },
+        "2" : {
+            "name" : "",
+            "reps" : "",
+            "link" : ""
+        },
+        "3" : {
+            "name" : "",
+            "reps" : "",
+            "link" : ""
+        },
+        "4" : {
+            "name" : "",
+            "reps" : "",
+            "link" : ""
+        },
+        "5" : {
+            "name" : "",
+            "reps" : "",
+            "link" : ""
+        },
+        "6" : {
+            "name" : "",
+            "reps" : "",
+            "link" : ""
+        },
+        "7" : {
+            "name" : "",
+            "reps" : "",
+            "link" : ""
+        }
+
+    },
+    "tuesday" : {
+        "title" : "Pull day",
+        "1" : {
+            "name" : "",
+            "reps" : "",
+            "link" : ""
+        },
+        "2" : {
+            "name" : "",
+            "reps" : "",
+            "link" : ""
+        },
+        "3" : {
+            "name" : "",
+            "reps" : "",
+            "link" : ""
+        },
+        "4" : {
+            "name" : "",
+            "reps" : "",
+            "link" : ""
+        },
+        "5" : {
+            "name" : "",
+            "reps" : "",
+            "link" : ""
+        },
+        "6" : {
+            "name" : "",
+            "reps" : "",
+            "link" : ""
+        },
+        "7" : {
+            "name" : "",
+            "reps" : "",
+            "link" : ""
+        }
+    },
+    "wednesday" : {
+        "title":"Push day",
+        "1" : {
+            "name" : "Diamond pushups",
+            "reps" : "10/20",
+            "link" : ""
+        },
+        "2" : {
+            "name" : "Widearm pushups",
+            "reps" : "10/20",
+            "link" : ""
+        },
+        "3" : {
+            "name" : "Archar puships",
+            "reps" : "10/20",
+            "link" : ""
+        },
+        "4" : {
+            "name" : "Bench dips",
+            "reps" : "10/20",
+            "link" : ""
+        },
+        "5" : {
+            "name" : "Decline pushups",
+            "reps" : "10/20",
+            "link" : ""
+        },
+        "6" : {
+            "name" : "Cross tricep extensions",
+            "reps" : "10/20",
+            "link" : ""
+        },
+        "7" : {
+            "name" : "",
+            "reps" : "",
+            "link" : ""
+        }
+    },
+    "thirsday" :{
+        "title" : "Pull day",
+        "1" : {
+            "name" : "",
+            "reps" : "",
+            "link" : ""
+        },
+        "2" : {
+            "name" : "",
+            "reps" : "",
+            "link" : ""
+        },
+        "3" : {
+            "name" : "",
+            "reps" : "",
+            "link" : ""
+        },
+        "4" : {
+            "name" : "",
+            "reps" : "",
+            "link" : ""
+        },
+        "5" : {
+            "name" : "",
+            "reps" : "",
+            "link" : ""
+        },
+        "6" : {
+            "name" : "",
+            "reps" : "",
+            "link" : ""
+        },
+        "7" : {
+            "name" : "",
+            "reps" : "",
+            "link" : ""
+        }
+    },
+    "friday"   :{
+        "title" : "Pull day",
+        "1" : {
+            "name" : "",
+            "reps" : "",
+            "link" : ""
+        },
+        "2" : {
+            "name" : "",
+            "reps" : "",
+            "link" : ""
+        },
+        "3" : {
+            "name" : "",
+            "reps" : "",
+            "link" : ""
+        },
+        "4" : {
+            "name" : "",
+            "reps" : "",
+            "link" : ""
+        },
+        "5" : {
+            "name" : "",
+            "reps" : "",
+            "link" : ""
+        },
+        "6" : {
+            "name" : "",
+            "reps" : "",
+            "link" : ""
+        },
+        "7" : {
+            "name" : "",
+            "reps" : "",
+            "link" : ""
+        }
+    },
+    "saturday" :{
+        "title" : "Pull day",
+        "1" : {
+            "name" : "",
+            "reps" : "",
+            "link" : ""
+        },
+        "2" : {
+            "name" : "",
+            "reps" : "",
+            "link" : ""
+        },
+        "3" : {
+            "name" : "",
+            "reps" : "",
+            "link" : ""
+        },
+        "4" : {
+            "name" : "",
+            "reps" : "",
+            "link" : ""
+        },
+        "5" : {
+            "name" : "",
+            "reps" : "",
+            "link" : ""
+        },
+        "6" : {
+            "name" : "",
+            "reps" : "",
+            "link" : ""
+        },
+        "7" : {
+            "name" : "",
+            "reps" : "",
+            "link" : ""
+        }
+    }
+}
