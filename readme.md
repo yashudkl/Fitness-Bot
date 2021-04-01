@@ -18,4 +18,5 @@ Fitness bot is a discord bot with itentions to help you get more deceplied in yo
 
 ## [Add us](https://discord.com/oauth2/authorize?client_id=822271237798887424&scope=bot&permissions=1140902912)
 
+[![Discord Bots](https://top.gg/api/widget/822271237798887424.svg)](https://top.gg/bot/822271237798887424)
 
