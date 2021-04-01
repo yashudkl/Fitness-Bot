@@ -87,8 +87,8 @@ async def print_routine(ch):
             color = discord.Color.purple(),
             description = 'Great! You did awsome! Lets get some rest, and call this a skip day today!'
         )
-        rest_embed.set_image(url = 'https://github.com/Eclipsu/Fitness-Bot/blob/MAIN/assets/rest.gif')
-        rest_embed.set_thumbnail(url = 'https://github.com/Eclipsu/Fitness-Bot/blob/MAIN/assets/rest.webp')
+        rest_embed.set_image(url = 'https://raw.githubusercontent.com/Eclipsu/Fitness-Bot/MAIN/assets/rest.gif')
+        rest_embed.set_thumbnail(url = 'https://raw.githubusercontent.com/Eclipsu/Fitness-Bot/MAIN/assets/rest.webp')
         await channel.send(embed = rest_embed)
         return
 
