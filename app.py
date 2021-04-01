@@ -61,17 +61,7 @@ def get_routine(week_day):
 
     return routine_title, _1_title, _1_reps, _1_link, _2_title, _2_reps, _2_link, _3_title, _3_reps, _3_link, _4_title, _4_reps, _4_link, _5_title, _5_reps, _5_link, _6_title, _6_reps, _6_link
 
-
-
-
-# bot on ready function
-@client.event
-async def on_ready():
-    await client.change_presence(activity=discord.Game('<3/ Workout'))
-    print(f'{client.user.name} deployed!')
-
-@client.command()
-async def schedule(ctx):
+async def print_routine(ch):
     """
     displays the schedule of the day (today).
     Args:
@@ -82,12 +72,14 @@ async def schedule(ctx):
 
         schedule_embed               = embed containing info about todays schedule.
     """
-
-    week_days = ['monday', 'tuesday', 'wednesday', 'thirsday', 'friday', 'saturday', 'sunday']
+    
+    channel = client.get_channel(ch)
+    week_days = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday']
     cr_year   = datetime.today().strftime('%Y')
     cr_month  = datetime.today().strftime('%m')
     cr_day    = datetime.today().strftime('%d')
-    week_num  = 4 
+    week_num  = dt.date(int(cr_year), int(cr_month), int(cr_day)).weekday()
+    print(week_num)
 
     if week_num == 4: #if its friday (rest day)
         rest_embed = discord.Embed(
@@ -97,7 +89,7 @@ async def schedule(ctx):
         )
         rest_embed.set_image(url = 'https://github.com/Eclipsu/Fitness-Bot/blob/MAIN/assets/rest.gif')
         rest_embed.set_thumbnail(url = 'https://github.com/Eclipsu/Fitness-Bot/blob/MAIN/assets/rest.webp')
-        await ctx.send(embed = rest_embed)
+        await channel.send(embed = rest_embed)
         return
 
     title,_1_title, _1_reps, _1_link,  _2_title, _2_reps, _2_link, _3_title, _3_reps, _3_link, _4_title, _4_reps, _4_link, _5_title, _5_reps, _5_link, _6_title, _6_reps, _6_link = get_routine(week_days[week_num])
@@ -114,7 +106,28 @@ async def schedule(ctx):
     schedule_embed.add_field(name = _6_title,  value  = f"[{_6_reps}]({_6_link}) reps", inline = True)
     schedule_embed.set_footer(text = 'DM us for more info')
 
-    await ctx.send(embed = schedule_embed)
+    await channel.send(embed = schedule_embed)
+
+
+# bot on ready function
+@client.event
+async def on_ready():
+    await client.change_presence(activity=discord.Game('<3/ Workout'))
+    print(f'{client.user.name} deployed!')
+
+
+@client.command()
+async def schedule(ctx):
+    """
+    displays the schedule of the day (today).
+    Calls:
+        print_routine()
+    Args:
+        channe_id = channel id 
+    """
+
+    channel_id = ctx.channel.id
+    await print_routine(ch = int(channel_id))
 
 # lists outs schedule of the week
 @client.command()
@@ -123,7 +136,7 @@ async def routine(ctx):
     Displays routine of the whole week.
     Args:
         routine_embed = Embed with information about the routine of the whole week.
-    """"
+    """
 
     routine_embed = discord.Embed(
         title = "\📋: Routine",
@@ -255,10 +268,12 @@ async def check_reminder():
         await asyncio.sleep(1)
         now = datetime.now()
         current_time  = now.strftime("%H:%M:%S")
-        x = dt.time(5, 30, 0)
+        x = dt.time(11, 16, 0)
         if current_time == str(x):
+            print('time')
             channel = client.get_channel(813017363443482645)
-            await channel.send(f'<@&{825697640560853004}> its time to workout!!')
+            await channel.send(f'<@&{825697640560853004}> Its time to grind!\n your schedule for today: ')
+            await print_routine(ch = 813017363443482645)
         
 client.loop.create_task(check_reminder())
 client.run(get_token())
